@@ -18,43 +18,42 @@
   </div>
 
   <script>
-  var requestOptions = {
+   var requestOptions = {
   method: 'GET',
   redirect: 'follow'
 };
+//https://rickandmortyapi.com/api/location/3,21
 
-fetch("https://rickandmortyapi.com/api/location/3,21", requestOptions)
+fetch("miURL",requestOptions)
+.then()
+.then()
+.catch();
+
+
+
+fetch("https://rickandmortyapi.com/api/character/1,2,3,4,5,6,7,8", requestOptions)
   .then(response => response.text())
   .then((result) => {
-    var test = JSON.parse(result);
-    console.log(test);
+    var datos = JSON.parse(result);
+    //console.log(datos);
+    datos.map((item) => {
+      document.getElementById("cardContainer").innerHTML += `
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <img src="`+item.image+`" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">`+item.name+` </h5>
+            <p class="card-text"> Status: `+item.status+`</p>
+          </div>
+        </div>
+      </div>
+      `;
+      console.log(item);
+
+    });
+
   })
   .catch(error => console.log('error', error));
-
-
-// fetch("https://rickandmortyapi.com/api/character/1,2,3,4,5,6,7,8", requestOptions)
-//   .then(response => response.text())
-//   .then((result) => {
-//     var datos = JSON.parse(result);
-//     //console.log(datos);
-//     datos.map((item) => {
-//       document.getElementById("cardContainer").innerHTML += `
-//       <div class="col">
-//         <div class="card" style="width: 18rem;">
-//           <img src="`+item.image+`" class="card-img-top" alt="...">
-//           <div class="card-body">
-//             <h5 class="card-title">`+item.name+` </h5>
-//             <p class="card-text"> Status: `+item.status+`</p>
-//           </div>
-//         </div>
-//       </div>
-//       `;
-//       console.log(item);
-
-//     });
-
-//   })
-//   .catch(error => console.log('error', error));
   </script>
 </body>
 </html>
